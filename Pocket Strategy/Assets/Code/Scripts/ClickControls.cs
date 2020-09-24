@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class ClickControls : MonoBehaviour
 {
-    public ScriptableObjects robots;
     public GameObject[] robotGameObjects;
-
     public Camera _cam;
 
     private int _selectedRobot = 0;
@@ -17,7 +16,7 @@ public class ClickControls : MonoBehaviour
 
     void Start()
     {
-        
+        robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
     }
 
     void Update()
@@ -35,18 +34,27 @@ public class ClickControls : MonoBehaviour
                 }
             }
         }
-        if (Input.GetButtonDown("NextRobot") || Input.GetButtonDown("PreviousRobot")) {
-            if (Input.GetButtonDown("NextRobot")) _selectedRobot++;
-            else if (Input.GetButtonDown("PreviousRobot")) _selectedRobot --;
+    }
 
-            if (_selectedRobot < 0)
-            {
-                _selectedRobot = robotGameObjects.Length - 1;
-            }
-            else if (_selectedRobot >= robotGameObjects.Length)
-            {
-                _selectedRobot = 0;
-            }
-        }
+    public void NextRobot()
+    {
+        robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        _selectedRobot++;
+        if (_selectedRobot >= robotGameObjects.Length)
+        {
+            _selectedRobot = 0;
+            robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        }else robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    public void PreviousRobot()
+    {
+        robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        _selectedRobot--;
+        if (_selectedRobot < 0)
+        {
+            _selectedRobot = robotGameObjects.Length - 1;
+            robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        }else robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
     }
 }
