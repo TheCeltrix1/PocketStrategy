@@ -17,6 +17,7 @@ public class ClickControls : MonoBehaviour
     void Start()
     {
         robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        robotGameObjects[_selectedRobot].GetComponent<Move>().selected = true;
     }
 
     void Update()
@@ -39,22 +40,26 @@ public class ClickControls : MonoBehaviour
     public void NextRobot()
     {
         robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        robotGameObjects[_selectedRobot].GetComponent<Move>().selected = false;
         _selectedRobot++;
         if (_selectedRobot >= robotGameObjects.Length)
         {
             _selectedRobot = 0;
             robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
-        }else robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        } else robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        robotGameObjects[_selectedRobot].GetComponent<Move>().selected = true;
     }
 
     public void PreviousRobot()
     {
         robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        robotGameObjects[_selectedRobot].GetComponent<Move>().selected = false;
         _selectedRobot--;
         if (_selectedRobot < 0)
         {
             _selectedRobot = robotGameObjects.Length - 1;
             robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
         }else robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        robotGameObjects[_selectedRobot].GetComponent<Move>().selected = true;
     }
 }
