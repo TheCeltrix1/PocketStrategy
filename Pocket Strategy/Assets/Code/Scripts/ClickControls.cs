@@ -29,7 +29,7 @@ public class ClickControls : MonoBehaviour
                 if (NavMesh.SamplePosition(_hit.point, out _navMeshHit, 2, NavMesh.AllAreas))
                 {
                     Move robbie = robotGameObjects[_selectedRobot].GetComponent<Move>();
-                    robbie.desitination = _navMeshHit.position;
+                    robbie.destination = _navMeshHit.position;
                     robbie.moveToPosition = true;
                 }
             }
