@@ -15,6 +15,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/BatteryRobot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/Billboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/Move.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/LightSwitch.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/ClickControls.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/LineofSight.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -24,6 +25,7 @@
         <option value="$PROJECT_DIR$/Assets/Code/Scripts/BatteryRobot.cs" />
         <option value="$PROJECT_DIR$/Assets/LineofSight.cs" />
         <option value="$PROJECT_DIR$/Assets/Code/Scripts/Billboard.cs" />
+        <option value="$PROJECT_DIR$/Assets/LightSwitch.cs" />
       </list>
     </option>
   </component>
@@ -74,7 +76,8 @@
       <option name="presentableId" value="Default" />
       <updated>1601129223707</updated>
       <workItem from="1601129225000" duration="4969000" />
-      <workItem from="1601138466520" duration="3800000" />
+      <workItem from="1601138466520" duration="4510000" />
+      <workItem from="1601164240121" duration="360000" />
     </task>
     <servers />
   </component>

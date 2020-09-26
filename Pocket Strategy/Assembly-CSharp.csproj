@@ -63,6 +63,7 @@
     <Compile Include="Assets\Code\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Code\Scripts\ClickControls.cs" />
     <Compile Include="Assets\Code\Scripts\Move.cs" />
+    <Compile Include="Assets\LightSwitch.cs" />
     <Compile Include="Assets\LineofSight.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Unity/PocketStrategy/Pocket Strategy/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
