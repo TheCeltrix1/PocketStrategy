@@ -680,9 +680,14 @@ MonoBehaviour:
   lestSeenLocation: {fileID: 472307177}
   player: {fileID: 1444791449}
   eyes: {fileID: 1884418016}
+  scanning: 0
   spotted: 0
   alert: 0
   maxSearchTimer: 3
+  spriteList:
+  - {fileID: 21300000, guid: 1400553da1859d74dac6c8f3102c3ba6, type: 3}
+  - {fileID: 21300000, guid: e8e6610a155115b4793fe5e4a09dcb24, type: 3}
+  - {fileID: 21300000, guid: 86c3f92390f1f9247a239ed17cde109f, type: 3}
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -2046,7 +2051,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884418015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.25, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 423727323}
@@ -2244,8 +2249,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.21659793, g: 0.9339623, b: 0.16300285, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e8e6610a155115b4793fe5e4a09dcb24, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
