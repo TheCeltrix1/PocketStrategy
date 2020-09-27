@@ -2,6 +2,9 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
+    <_TargetFrameworkDirectories>non_empty_path_generated_by_rider_editor_plugin</_TargetFrameworkDirectories>
+    <_FullFrameworkReferenceAssemblyPaths>non_empty_path_generated_by_rider_editor_plugin</_FullFrameworkReferenceAssemblyPaths>
+    <DisableHandlePackageFileConflicts>true</DisableHandlePackageFileConflicts>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -58,6 +61,12 @@
     <Reference Include="UnityEditor">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2018.3.14f1\Editor\Data\Managed/UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.3.14f1\Editor\Data\PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2018.3.14f1\Editor\Data\PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Code\ScriptableObjects\Scriptable Objects.cs" />
@@ -65,6 +74,9 @@
     <Compile Include="Assets\Code\Scripts\Billboard.cs" />
     <Compile Include="Assets\Code\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Code\Scripts\ClickControls.cs" />
+    <Compile Include="Assets\Code\Scripts\Hackable.cs" />
+    <Compile Include="Assets\Code\Scripts\HackerRobot.cs" />
+    <Compile Include="Assets\Code\Scripts\LineofSight.cs" />
     <Compile Include="Assets\Code\Scripts\Move.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/GitProjects/PocketStrategy/PocketStrategy/Pocket Strategy/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

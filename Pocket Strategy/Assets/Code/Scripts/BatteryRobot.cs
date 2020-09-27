@@ -5,11 +5,10 @@ using UnityEngine.AI;
 
 public class BatteryRobot : MonoBehaviour
 {
+    private bool _selected;
     private NavMeshAgent _navMeshMoveComponent;
     private Move _moveComponent;
     private SphereCollider _sphere;
-    private ArrayList _nearbyRobots = new ArrayList();
-
     private float _objectDistance = 10;
     private GameObject _nearestObject;
 
@@ -35,8 +34,11 @@ public class BatteryRobot : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_nearbyRobots.Count);
-        Recharge();
+        _nearestObject = _moveComponent.nearestObject;
+        if (this.GetComponent<Move>()) _selected = this.GetComponent<Move>().selected;
+        else Destroy(this);
+        if(_selected) Recharge();
+        //Debug.Log(_nearestObject);
     }
 
     void Recharge()
@@ -45,45 +47,9 @@ public class BatteryRobot : MonoBehaviour
         {
             if (_nearestObject.GetComponent<Move>().powerReserves < _nearestObject.GetComponent<Move>().powerReservesMax)
             {
-                _moveComponent.powerReserves -= 10;
-                _nearestObject.GetComponent<Move>().powerReserves += 10;
+                _moveComponent.powerReserves -= (30 * Time.deltaTime);
+                _nearestObject.GetComponent<Move>().powerReserves += (30 * Time.deltaTime);
             }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Move>())
-        {
-            _nearbyRobots.Add(other);
-        }
-        if (_nearestObject == null)
-        {
-            _nearestObject = other.gameObject;
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        foreach(Object obj in _nearbyRobots)
-        {
-            if (Vector3.Distance(this.transform.position, other.transform.position) < Vector3.Distance(this.transform.position, _nearestObject.transform.position))
-            {
-                _nearestObject = other.gameObject;
-                Debug.Log(_nearestObject);
-            }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.GetComponent<Move>())
-        {
-            _nearbyRobots.Remove(other);
-        }
-        if (_nearbyRobots.Count == 0)
-        {
-            _nearestObject = null;
         }
     }
 }
