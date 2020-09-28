@@ -13,7 +13,10 @@ public class Move : MonoBehaviour
     public float powerReserves;
     public float powerReservesMax;
     public bool selected;
+    public GameObject nearestObject;
 
+    private Component _robotAbility;
+    private ArrayList _nearbyRobots = new ArrayList();
     private GameObject _batterySlider;
     private NavMeshAgent _navMesh;
 
@@ -26,9 +29,16 @@ public class Move : MonoBehaviour
         _navMesh.acceleration = 20;
         _navMesh.angularSpeed = 90;
         destination = this.transform.position;
+        if (this.GetComponent<BatteryRobot>())
+        {
+            _robotAbility = this.GetComponent<BatteryRobot>();
+        }
+        else if (this.GetComponent<HackerRobot>())
+        {
+            _robotAbility = this.GetComponent<HackerRobot>();
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (powerReserves <= 0) destination = this.transform.position;
@@ -37,7 +47,10 @@ public class Move : MonoBehaviour
         {
             PowerChange(-1);
         }
-        if (selected) _batterySlider.GetComponent<Slider>().value = powerReserves;
+        if (selected)
+        {
+            _batterySlider.GetComponent<Slider>().value = powerReserves;
+        }
     }
 
     void Interact()
@@ -51,6 +64,41 @@ public class Move : MonoBehaviour
         if (powerReserves > powerReservesMax)
         {
             powerReserves = powerReservesMax;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Move>() || other.GetComponent<Hackable>())
+        {
+            _nearbyRobots.Add(other);
+        }
+        if (nearestObject == null && (other.GetComponent<Move>() || other.GetComponent<Hackable>()))
+        {
+            nearestObject = other.gameObject;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        foreach (Object obj in _nearbyRobots)
+        {
+            if (Vector3.Distance(this.transform.position, other.transform.position) < Vector3.Distance(this.transform.position, nearestObject.transform.position))
+            {
+                nearestObject = other.gameObject;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Move>() || other.GetComponent<Hackable>())
+        {
+            _nearbyRobots.Remove(other);
+        }
+        if (_nearbyRobots.Count == 0)
+        {
+            nearestObject = null;
         }
     }
 }
