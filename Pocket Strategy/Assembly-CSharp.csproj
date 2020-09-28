@@ -74,6 +74,7 @@
     <Compile Include="Assets\Code\Scripts\Billboard.cs" />
     <Compile Include="Assets\Code\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Code\Scripts\ClickControls.cs" />
+    <Compile Include="Assets\Code\Scripts\GameOver.cs" />
     <Compile Include="Assets\Code\Scripts\Hackable.cs" />
     <Compile Include="Assets\Code\Scripts\HackerRobot.cs" />
     <Compile Include="Assets\Code\Scripts\LineofSight.cs" />

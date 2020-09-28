@@ -27,7 +27,6 @@ public class Hackable : MonoBehaviour
         _hackTimer += Time.deltaTime;
         if (_hackTimer >= _hackingTime)
         {
-            Debug.Log("HACKED");
             _hacked = true;
         }
     }

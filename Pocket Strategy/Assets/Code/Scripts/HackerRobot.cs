@@ -20,8 +20,8 @@ public class HackerRobot : MonoBehaviour
 
         _moveComponent = this.GetComponent<Move>();
 
-        _moveComponent.powerReservesMax = 1000;
-        _moveComponent.powerReserves = 1000;
+        _moveComponent.powerReservesMax = 500;
+        _moveComponent.powerReserves = 500;
 
         if (this.GetComponent<SphereCollider>() == false)
         {
