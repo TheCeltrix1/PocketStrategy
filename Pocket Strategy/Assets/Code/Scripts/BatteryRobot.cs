@@ -35,7 +35,7 @@ public class BatteryRobot : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(_nearbyRobots.Count);
+        Debug.Log(_nearbyRobots.Count);
         Recharge();
     }
 
