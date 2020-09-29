@@ -15,10 +15,14 @@
             <e p="Billboard.cs" t="Include" />
             <e p="CameraMovement.cs" t="Include" />
             <e p="ClickControls.cs" t="Include" />
+            <e p="GameOver.cs" t="Include" />
+            <e p="Hackable.cs" t="Include" />
+            <e p="HackerRobot.cs" t="Include" />
+            <e p="LineofSight.cs" t="Include" />
             <e p="Move.cs" t="Include" />
           </e>
         </e>
-        <e p="LineofSight.cs" t="Include" />
+        <e p="EyesTrigger.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />

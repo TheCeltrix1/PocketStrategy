@@ -13,10 +13,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/BatteryRobot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/EyesTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/Billboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/Move.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/ClickControls.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/LineofSight.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/LineofSight.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -24,6 +25,8 @@
         <option value="$PROJECT_DIR$/Assets/Code/Scripts/BatteryRobot.cs" />
         <option value="$PROJECT_DIR$/Assets/LineofSight.cs" />
         <option value="$PROJECT_DIR$/Assets/Code/Scripts/Billboard.cs" />
+        <option value="$PROJECT_DIR$/Assets/EyesTrigger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Code/Scripts/LineofSight.cs" />
       </list>
     </option>
   </component>
@@ -75,6 +78,7 @@
       <updated>1601129223707</updated>
       <workItem from="1601129225000" duration="4969000" />
       <workItem from="1601138466520" duration="3800000" />
+      <workItem from="1601389973098" duration="4387000" />
     </task>
     <servers />
   </component>
