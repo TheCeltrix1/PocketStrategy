@@ -38,17 +38,18 @@ public class BatteryRobot : MonoBehaviour
         if (this.GetComponent<Move>()) _selected = this.GetComponent<Move>().selected;
         else Destroy(this);
         if(_selected) Recharge();
-        //Debug.Log(_nearestObject);
     }
 
     void Recharge()
     {
         if (Input.GetButton("ActiveAbility"))
         {
-            if (_nearestObject.GetComponent<Move>().powerReserves < _nearestObject.GetComponent<Move>().powerReservesMax)
-            {
-                _moveComponent.powerReserves -= (30 * Time.deltaTime);
-                _nearestObject.GetComponent<Move>().powerReserves += (30 * Time.deltaTime);
+            if (_nearestObject.GetComponent<Move>()) {
+                if (_nearestObject.GetComponent<Move>().powerReserves < _nearestObject.GetComponent<Move>().powerReservesMax)
+                {
+                    _moveComponent.PowerChange(30);
+                    _nearestObject.GetComponent<Move>().PowerChange(30);
+                }
             }
         }
     }

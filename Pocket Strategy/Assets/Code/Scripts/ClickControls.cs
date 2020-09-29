@@ -62,4 +62,28 @@ public class ClickControls : MonoBehaviour
         }else robotGameObjects[_selectedRobot].transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
         robotGameObjects[_selectedRobot].GetComponent<Move>().selected = true;
     }
+
+    public void SwapRobots(int i)
+    {
+        _selectedRobot = i;
+        foreach (GameObject rob in robotGameObjects)
+        {
+            rob.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+            rob.GetComponent<Move>().selected = false;
+        }
+        switch (i) {
+
+            case 0:
+
+                break;
+
+            case 1:
+
+                break;
+
+            case 2:
+
+                break;
+        }
+    }
 }
