@@ -9,6 +9,7 @@ public class Move : MonoBehaviour
     public bool moveToPosition = false;
     public Vector3 destination;
     public int speed;
+    public bool escaped;
 
     public float powerReserves;
     public float powerReservesMax;
@@ -45,22 +46,28 @@ public class Move : MonoBehaviour
         _navMesh.SetDestination(destination);
         if ((Mathf.Abs(_navMesh.velocity.x) > 1f || Mathf.Abs(_navMesh.velocity.z) > 1f) && selected)
         {
-            PowerChange(-1);
+            PowerChange(-25);
         }
         if (selected)
         {
             _batterySlider.GetComponent<Slider>().value = powerReserves;
+            if (Input.GetButton("ActiveAbility"))
+            {
+                if (nearestObject.GetComponent<ChargingStation>())
+                {
+                    PowerChange(50);
+                }
+            }
         }
     }
 
     void Interact()
     {
-        PowerChange(-25);
     }
 
-    void PowerChange(float valueChange)
+    public void PowerChange(float valueChange)
     {
-        powerReserves += valueChange;
+        powerReserves += (valueChange * Time.deltaTime);
         if (powerReserves > powerReservesMax)
         {
             powerReserves = powerReservesMax;
@@ -69,11 +76,11 @@ public class Move : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Move>() || other.GetComponent<Hackable>())
+        if (other.GetComponent<Move>() || other.GetComponent<Hackable>() || other.GetComponent<ChargingStation>())
         {
             _nearbyRobots.Add(other);
         }
-        if (nearestObject == null && (other.GetComponent<Move>() || other.GetComponent<Hackable>()))
+        if (nearestObject == null && (other.GetComponent<Move>() || other.GetComponent<Hackable>() || other.GetComponent<ChargingStation>()))
         {
             nearestObject = other.gameObject;
         }
@@ -92,7 +99,7 @@ public class Move : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Move>() || other.GetComponent<Hackable>())
+        if (other.GetComponent<Move>() || other.GetComponent<Hackable>() || other.GetComponent<ChargingStation>())
         {
             _nearbyRobots.Remove(other);
         }
