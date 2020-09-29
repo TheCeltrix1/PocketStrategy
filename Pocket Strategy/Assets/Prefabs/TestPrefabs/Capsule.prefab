@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7287776288800440261}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,6 +136,7 @@ MonoBehaviour:
   powerReserves: 0
   powerReservesMax: 0
   selected: 0
+  nearestObject: {fileID: 0}
 --- !u!54 &7287776288800440261
 Rigidbody:
   m_ObjectHideFlags: 0
