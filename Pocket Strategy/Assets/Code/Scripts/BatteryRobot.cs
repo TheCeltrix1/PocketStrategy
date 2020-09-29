@@ -47,7 +47,7 @@ public class BatteryRobot : MonoBehaviour
             if (_nearestObject.GetComponent<Move>()) {
                 if (_nearestObject.GetComponent<Move>().powerReserves < _nearestObject.GetComponent<Move>().powerReservesMax)
                 {
-                    _moveComponent.PowerChange(30);
+                    _moveComponent.PowerChange(-30);
                     _nearestObject.GetComponent<Move>().PowerChange(30);
                 }
             }
