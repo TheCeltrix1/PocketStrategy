@@ -12,11 +12,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/HackerRobot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/BatteryRobot.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/EyesTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/Billboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/Move.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/ClickControls.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/RoomCheck.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/Hackable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/EyesTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/LineofSight.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -24,8 +28,12 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Code/Scripts/BatteryRobot.cs" />
         <option value="$PROJECT_DIR$/Assets/LineofSight.cs" />
-        <option value="$PROJECT_DIR$/Assets/Code/Scripts/Billboard.cs" />
         <option value="$PROJECT_DIR$/Assets/EyesTrigger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Code/Scripts/EyesTrigger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Code/Scripts/ClickControls.cs" />
+        <option value="$PROJECT_DIR$/Assets/RoomCheck.cs" />
+        <option value="$PROJECT_DIR$/Assets/CameraController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Code/Scripts/Billboard.cs" />
         <option value="$PROJECT_DIR$/Assets/Code/Scripts/LineofSight.cs" />
       </list>
     </option>
@@ -79,6 +87,7 @@
       <workItem from="1601129225000" duration="4969000" />
       <workItem from="1601138466520" duration="3800000" />
       <workItem from="1601389973098" duration="4387000" />
+      <workItem from="1601413090724" duration="13663000" />
     </task>
     <servers />
   </component>
