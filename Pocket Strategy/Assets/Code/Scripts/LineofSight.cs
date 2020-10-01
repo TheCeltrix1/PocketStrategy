@@ -37,8 +37,148 @@ public class LineofSight : MonoBehaviour
     public GameObject enemyRouteHolder;
     public Transform[] enemyRoute;
     private int routeNo;
+
+    private int _enemyState;
     
-    // Start is called before the first frame update
+    private float _eyeMoveTimer;
+    private int _eyeMoveModifier;
+
+    void Start()
+    {
+        // Detach GameObjects
+        lastSeenLocation.transform.parent = null;
+        enemyRouteHolder.transform.parent = null;
+        
+        // NavMesh Setup
+        _navMesh = transform.GetComponent<NavMeshAgent>();
+        _navMesh.speed = 2;
+        _navMesh.acceleration = 20;
+        _navMesh.angularSpeed = 500;
+        destination = transform.position;
+        
+        // Default State
+        _enemyState = 0;
+        
+        _scanningTime = 0;
+        _scanningTimeMax = 2;
+        _distCheck = 1.1f;
+
+        _eyeMoveTimer = 0;
+        _eyeMoveModifier = 0;
+    }
+    
+    // 0 - Idle
+    // 1 - Spotted
+    // 2 - Aggro
+    // 3 - Searching
+
+    private void Update()
+    {
+        RaycastHit hit;
+        if (targetFound)
+        {
+            
+            if (!Physics.Raycast(eyes.position, targetPlayer.transform.position - eyes.position, out hit, 50, obstacleLayers))
+            {
+                if (_enemyState == 0)
+                {
+                    _scanningTime = 0;
+                    _enemyState = 1;
+                }
+            }
+        }
+
+
+        switch (_enemyState)
+        {
+            case 0:
+            {
+                alertLevelSprite.enabled = false;
+                
+                lastSeenLocation.transform.position = new Vector3(0, -10, 0);
+                _distCheck = 0.1f;
+            
+                destination = new Vector3(enemyRoute[routeNo].position.x, transform.position.y, enemyRoute[routeNo].position.z);
+            
+                if (_distanceToTarget < _distCheck)
+                    routeNo = (routeNo + 1) % enemyRoute.Length;
+
+                _navMesh.speed = 2;
+                break;
+            }
+            case 1:
+                _navMesh.speed = 0;
+
+                lastSeenLocation.transform.position = targetPlayer.transform.position;
+                destination = lastSeenLocation.transform.position;
+                
+                alertLevelSprite.enabled = true;
+                alertLevelSprite.sprite = spriteList[0];
+                
+                _scanningTime += 1 * Time.deltaTime;
+                if (_scanningTime > _scanningTimeMax)
+                    _enemyState = 2;
+                break;
+            case 2:
+                _distCheck = 3;
+                _navMesh.speed = _distanceToTarget > _distCheck ? 2 : 0;
+                
+                if (Physics.Raycast(eyes.position, targetPlayer.transform.position - eyes.position, out hit, 50, obstacleLayers))
+                {
+                    // Not Seen
+                    _enemyState = 3;
+                }
+                else
+                {
+                    // Seen
+                    lastSeenLocation.transform.position = targetPlayer.transform.position;
+                    _searchTimer = maxSearchTimer;
+                }
+                
+                destination = lastSeenLocation.transform.position;
+                
+                alertLevelSprite.sprite = spriteList[1];
+                break;
+            case 3:
+                _navMesh.speed = 2;
+                
+                _eyeMoveTimer += 1 * Time.deltaTime;
+
+                if (_eyeMoveTimer >= 1)
+                {
+                    _eyeMoveTimer = 0;
+                    _eyeMoveModifier = (_eyeMoveModifier + 1) % 3;
+                }
+                //Debug.Log(_eyeMoveTimer);
+                
+                alertLevelSprite.sprite = spriteList[2 + _eyeMoveModifier];
+                
+                destination = lastSeenLocation.transform.position;
+
+                if (!Physics.Raycast(eyes.position, targetPlayer.transform.position - eyes.position, out hit, 50, obstacleLayers))
+                {
+                    _enemyState = 2;
+                }
+                
+                _distCheck = 1.1f;
+                if (_distanceToTarget <= _distCheck)
+                {
+                    _searchTimer -= 1 * Time.deltaTime;
+                    if (_searchTimer <= 0)
+                        _enemyState = 0;
+                }
+
+                targetFound = false;
+                
+                break;
+        }
+        
+        _distanceToTarget = Vector3.Distance(transform.position, destination);
+        _navMesh.SetDestination(destination);
+    }
+}
+
+/*// Start is called before the first frame update
     void Start()
     {
         lastSeenLocation.transform.parent = null;
@@ -47,12 +187,12 @@ public class LineofSight : MonoBehaviour
         _navMesh = transform.GetComponent<NavMeshAgent>();
         _navMesh.speed = 2;
         _navMesh.acceleration = 20;
-        _navMesh.angularSpeed = 90;
+        _navMesh.angularSpeed = 120;
         destination = transform.position;
         _startPos = destination;
 
         _scanningTime = 0;
-        _scanningTimeMax = 1;
+        _scanningTimeMax = 2;
         _distCheck = 1.1f;
     }
 
@@ -101,7 +241,7 @@ public class LineofSight : MonoBehaviour
             }
             else
             {
-                destination = _startPos;
+                //destination = _startPos;
                 lastSeenLocation.transform.position = new Vector3(0, -10, 0);
             }
 
@@ -158,7 +298,4 @@ public class LineofSight : MonoBehaviour
 
             _navMesh.SetDestination(destination);
         }
-        
-        
-    }
-}
+    }*/

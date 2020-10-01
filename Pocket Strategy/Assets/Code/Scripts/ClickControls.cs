@@ -8,7 +8,9 @@ using UnityEngine.EventSystems;
 public class ClickControls : MonoBehaviour
 {
     public GameObject[] robotGameObjects;
-    public Camera cam;
+    public Camera[] cam;
+    public CameraController CameraControllerScript;
+    public AudioSource changeRobot;
 
     private int _selectedRobot = 0;
     private RaycastHit _hit;
@@ -42,7 +44,7 @@ public class ClickControls : MonoBehaviour
                 }
                 if (_hitCanvas == false)
                 {
-                    _ray = cam.ScreenPointToRay(Input.mousePosition);
+                    _ray = cam[CameraControllerScript.roomNo].ScreenPointToRay(Input.mousePosition);
                     if (Physics.Raycast(_ray, out _hit))
                     {
                         if (NavMesh.SamplePosition(_hit.point, out _navMeshHit, 2, NavMesh.AllAreas))
@@ -87,6 +89,7 @@ public class ClickControls : MonoBehaviour
     public void SwapRobots(int i)
     {
         _selectedRobot = i;
+        changeRobot.Play();
         foreach (GameObject rob in robotGameObjects)
         {
             rob.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
