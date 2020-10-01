@@ -75,13 +75,20 @@ public class LineofSight : MonoBehaviour
     private void Update()
     {
         RaycastHit hit;
+        targetPlayer = players[0];
+        if (Physics.Raycast(eyes.position, targetPlayer.transform.position - eyes.position, out hit, 50))
+        {
+            Debug.DrawRay(eyes.position, targetPlayer.transform.position - eyes.position, Color.yellow);
+            //Debug.Log(hit.collider.name);
+        }
+
         if (targetFound)
         {
-            
-            if (!Physics.Raycast(eyes.position, targetPlayer.transform.position - eyes.position, out hit, 50, obstacleLayers))
+            if (Physics.Raycast(eyes.position, targetPlayer.transform.position - eyes.position, out hit, 50))
             {
-                if (_enemyState == 0)
+                if (_enemyState == 0 && hit.collider.CompareTag("Player"))
                 {
+                    //Debug.Log("Test");
                     _scanningTime = 0;
                     _enemyState = 1;
                 }
@@ -120,24 +127,25 @@ public class LineofSight : MonoBehaviour
                     _enemyState = 2;
                 break;
             case 2:
-                _distCheck = 3;
-                _navMesh.speed = _distanceToTarget > _distCheck ? 2 : 0;
-                
-                if (Physics.Raycast(eyes.position, targetPlayer.transform.position - eyes.position, out hit, 50, obstacleLayers))
+                if (Physics.Raycast(eyes.position, targetPlayer.transform.position - eyes.position, out hit, 50))
                 {
-                    // Not Seen
-                    _enemyState = 3;
-                }
-                else
-                {
-                    // Seen
-                    lastSeenLocation.transform.position = targetPlayer.transform.position;
-                    _searchTimer = maxSearchTimer;
-                }
+                    if (hit.collider.CompareTag("Player"))
+                    {
+                        _distCheck = 3;
+                        _navMesh.speed = _distanceToTarget > _distCheck ? 2 : 0;
+                        
+                        lastSeenLocation.transform.position = targetPlayer.transform.position;
+                        _searchTimer = maxSearchTimer;
+                        
+                        destination = lastSeenLocation.transform.position;
                 
-                destination = lastSeenLocation.transform.position;
-                
-                alertLevelSprite.sprite = spriteList[1];
+                        alertLevelSprite.sprite = spriteList[1];
+                    }
+                    else
+                    {
+                        _enemyState = 3;
+                    }
+                }
                 break;
             case 3:
                 _navMesh.speed = 2;
@@ -149,18 +157,18 @@ public class LineofSight : MonoBehaviour
                     _eyeMoveTimer = 0;
                     _eyeMoveModifier = (_eyeMoveModifier + 1) % 3;
                 }
-                //Debug.Log(_eyeMoveTimer);
                 
                 alertLevelSprite.sprite = spriteList[2 + _eyeMoveModifier];
                 
                 destination = lastSeenLocation.transform.position;
 
-                if (!Physics.Raycast(eyes.position, targetPlayer.transform.position - eyes.position, out hit, 50, obstacleLayers))
+                if (Physics.Raycast(eyes.position, targetPlayer.transform.position - eyes.position, out hit, 50))
                 {
-                    _enemyState = 2;
+                    if (hit.collider.CompareTag("Player"))
+                        _enemyState = 2;
                 }
                 
-                _distCheck = 1.1f;
+                _distCheck = 2.2f;
                 if (_distanceToTarget <= _distCheck)
                 {
                     _searchTimer -= 1 * Time.deltaTime;
@@ -170,6 +178,7 @@ public class LineofSight : MonoBehaviour
 
                 targetFound = false;
                 
+                //Debug.Log(_distanceToTarget);
                 break;
         }
         

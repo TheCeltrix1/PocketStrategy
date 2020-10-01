@@ -17,9 +17,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/Billboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/Move.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/ClickControls.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/RoomCheck.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/Hackable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/EyesTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/LineofSight.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -88,6 +86,7 @@
       <workItem from="1601138466520" duration="3800000" />
       <workItem from="1601389973098" duration="4387000" />
       <workItem from="1601413090724" duration="13663000" />
+      <workItem from="1601560338431" duration="3420000" />
     </task>
     <servers />
   </component>
