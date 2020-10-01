@@ -15,7 +15,10 @@ public class Move : MonoBehaviour
     public float powerReservesMax;
     public bool selected;
     public GameObject nearestObject;
+    
+    public AudioSource death;
 
+    private bool _audioNotPlayed = true;
     private Component _robotAbility;
     private ArrayList _nearbyRobots = new ArrayList();
     private GameObject _batterySlider;
@@ -42,7 +45,20 @@ public class Move : MonoBehaviour
 
     void Update()
     {
-        if (powerReserves <= 0) destination = this.transform.position;
+        if (powerReserves <= 0)
+        {
+            powerReserves = 0;
+            if (selected && _audioNotPlayed)
+            {
+                _audioNotPlayed = false;
+                death.Play();
+            }
+            destination = this.transform.position;
+        }
+        else
+        {
+            _audioNotPlayed = true;
+        }
         _navMesh.SetDestination(destination);
         if ((Mathf.Abs(_navMesh.velocity.x) > 1f || Mathf.Abs(_navMesh.velocity.z) > 1f) && selected)
         {

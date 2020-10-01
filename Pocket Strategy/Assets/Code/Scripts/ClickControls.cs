@@ -10,6 +10,7 @@ public class ClickControls : MonoBehaviour
     public GameObject[] robotGameObjects;
     public Camera[] cam;
     public CameraController CameraControllerScript;
+    public AudioSource changeRobot;
 
     private int _selectedRobot = 0;
     private RaycastHit _hit;
@@ -88,6 +89,7 @@ public class ClickControls : MonoBehaviour
     public void SwapRobots(int i)
     {
         _selectedRobot = i;
+        changeRobot.Play();
         foreach (GameObject rob in robotGameObjects)
         {
             rob.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
